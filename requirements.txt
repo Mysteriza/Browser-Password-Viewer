@@ -1,2 +1,5 @@
 pypiwin32
 pycryptodome
+telepot
+pycryptodome
+pywin32

@@ -1,5 +1,5 @@
 # Browser Password Backup
-This python program backup all passwords and credit card from browsers!
+This python program backup all passwords and credit cards from browsers!
 
 # 📎Modules Required
 To install all the required modules use the following code:
@@ -11,5 +11,3 @@ To install all the required modules use the following code:
     ✔ Google-chrome
     ✔ Microsoft-edge
     ✔ Brave
-
-# 💡Copyrights © [Henry Richard J](https://github.com/henry-richard7)
