@@ -1,5 +1,5 @@
 # Browser Password Viewer
-This python program *grab* and show all passwords and credit cards from browsers!
+This python program *grab* and show all passwords and credit cards from browsers! Only works on Windows!
 
 # How-to
 Just run the EXE program, and all browser passwords will be saved to a TXT file!
